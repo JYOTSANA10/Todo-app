@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "src/user/entities/user.entity";
+import { Column, Entity, ManyToOne, ObjectId, ObjectIdColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Todo {
@@ -7,17 +8,15 @@ export class Todo {
     id:number;
 
     @Column()
-    firstName:string;
+    title:string;
 
     @Column()
-    lastName:string;
+    date:string;
+
 
     @Column()
-    email:string;
+    completed:boolean;
 
-    @Column()
-    password:string;
-
-    @Column()
-    role:string;
+    @ManyToOne(() => User, (user) => user.todos)
+    user:User;
 }

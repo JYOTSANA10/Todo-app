@@ -14,12 +14,22 @@ import { TodoModule } from './todo/todo.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-          "type": configService.get('DB_TYPE'),
-          "url": configService.get('DB_URL'),
-          "useNewUrlParser": true,
-          "synchronize": true,
-          "logging": true,
-          "entities": [__dirname+'/**/*.entity{.ts,.js}']
+        // "type": configService.get('DB_TYPE'),
+        // "url": configService.get('DB_URL'),
+        // "useNewUrlParser": true,
+        // "synchronize": true,
+        // "logging": true,
+        // "entities": [__dirname+'/**/*.entity{.ts,.js}']
+
+        type: 'mysql',
+        host: 'localhost',
+        port: 3306,
+        username: 'root',
+        password: 'root',
+        database: 'Todo App',
+        entities: [__dirname+'/**/*.entity{.ts,.js}'],
+        synchronize: true,
+        "logging": true,
       }),
     }),
     UserModule,
